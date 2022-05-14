@@ -1,5 +1,6 @@
 # SmitheringAPI
 API created with educational purpose.
+Using Typescript, Mysql, prisma and Express·
 
 
 ### To run the program on your machine, run the following commands in order:

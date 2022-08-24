@@ -34,6 +34,8 @@ model Product {
   amount  String
   order   Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId Int?
+  url     String
+  price   String
 
   @@map("Products")
 }

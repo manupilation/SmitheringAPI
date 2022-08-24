@@ -15,7 +15,7 @@ const recreateDatabase = async () => {
   await connection.execute('CREATE SCHEMA Trybesmith;');
   await connection.execute('CREATE TABLE Trybesmith.Users (id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, username TEXT NOT NULL, classe TEXT NOT NULL, level INTEGER NOT NULL, password TEXT NOT NULL);');
   await connection.execute('CREATE TABLE Trybesmith.Orders (id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, userId INTEGER, FOREIGN KEY (userId) REFERENCES Trybesmith.Users (id));');
-  await connection.execute('CREATE TABLE Trybesmith.Products (id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, name TEXT NOT NULL, amount TEXT NOT NULL, orderId INTEGER, FOREIGN KEY (orderId) REFERENCES Trybesmith.Orders (id));');
+  await connection.execute('CREATE TABLE Trybesmith.Products (id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL, name TEXT NOT NULL, amount TEXT NOT NULL, orderId INTEGER, url TEXT NOT NULL, price TEXT NOT NULL, FOREIGN KEY (orderId) REFERENCES Trybesmith.Orders (id));');
 };
 
 afterAll(async () => {
@@ -273,6 +273,8 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
     const result = await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "aa",
+      price: "12 GC"
     });
 
     expect(result.statusCode).toEqual(401);
@@ -283,6 +285,8 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
     const result = await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", "Bearer 123");
 
     expect(result.statusCode).toEqual(401);
@@ -293,6 +297,8 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
   it('Será validado que o campo "name" é obrigatório', async () => {
     const result = await request(app).post("/products").send({
       amount: "amount",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(400);
@@ -301,8 +307,10 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
 
   it('Será validado que o campo "name" tem o tipo string', async () => {
     const result = await request(app).post("/products").send({
-      name: 1,
+      name: 223,
       amount: "amount",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(422);
@@ -311,8 +319,10 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
 
   it('Será validado que o campo "name" é uma string com mais de 2 caracteres', async () => {
     const result = await request(app).post("/products").send({
-      name: "1",
+      name: "n",
       amount: "amount",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(422);
@@ -323,6 +333,8 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
   it('Será validado que o campo "amount" é obrigatório', async () => {
     const result = await request(app).post("/products").send({
       name: "name",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(400);
@@ -332,7 +344,9 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
   it('Será validado que o campo "amount" tem o tipo string', async () => {
     const result = await request(app).post("/products").send({
       name: "name",
-      amount: 1,
+      amount: 1234,
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(422);
@@ -342,11 +356,58 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
   it('Será validado que o campo "amount" é uma string com mais de 2 caracteres', async () => {
     const result = await request(app).post("/products").send({
       name: "name",
-      amount: "1",
+      amount: "a",
+      url: "aa",
+      price: "12 GC"
     }).set("Authorization", token);
 
     expect(result.statusCode).toEqual(422);
     expect(result.body.error).toEqual("Amount must be longer than 2 characters");
+  });
+
+  it('Será validado que o campo "URL" é obrigatório', async () => {
+    const result = await request(app).post("/products").send({
+      name: "name",
+      amount: "amount",
+      price: "12 GC"
+    }).set("Authorization", token)
+    expect(result.statusCode).toEqual(400);
+    expect(result.body.error).toEqual("URL is required");
+  });
+
+  it('Será validado que o campo "URL" é uma string', async () => {
+    const result = await request(app).post("/products").send({
+      name: "name",
+      amount: "amount",
+      url: 1234,
+      price: "12 GC"
+    }).set("Authorization", token);
+
+    expect(result.statusCode).toEqual(422);
+    expect(result.body.error).toEqual("URL must be a string");
+  });
+
+  it('Será validado que o campo "price" é obrigatório', async () => {
+    const result = await request(app).post("/products").send({
+      name: "name",
+      amount: "amount",
+      url: "aa",
+    }).set("Authorization", token);
+
+    expect(result.statusCode).toEqual(400);
+    expect(result.body.error).toEqual("Price is required");
+  });
+
+  it('Será validado que o campo "price" é uma string', async () => {
+    const result = await request(app).post("/products").send({
+      name: "name",
+      amount: "amount",
+      url: "aa",
+      price: 1234
+    }).set("Authorization", token);
+
+    expect(result.statusCode).toEqual(422);
+    expect(result.body.error).toEqual("Price must be a string");
   });
 
 
@@ -354,12 +415,18 @@ describe("3 - Crie um endpoint para o cadastro de produtos", () => {
     const result = await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "aaa",
+      price: "2 GC"
     }).set("Authorization", token);
     expect(result.statusCode).toEqual(201);
     expect(result.body.item.id).toBeDefined();
     expect(result.body.item.name).toEqual("name");
     expect(result.body.item.amount).toEqual("amount");
+    expect(result.body.item.url).toEqual("aaa");
+    expect(result.body.item.price).toEqual("2 GC");
   });
+
+  afterAll( async () => await dropDatabase())
 });
 
 describe("4 - Crie um endpoint para a listagem de produtos", () => {
@@ -381,10 +448,15 @@ describe("4 - Crie um endpoint para a listagem de produtos", () => {
     await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "aaa",
+      price: "2 GC"
     }).set("Authorization", token);
+
     await request(app).post("/products").send({
-      name: "name2",
-      amount: "amount2",
+      name: "name",
+      amount: "amount",
+      url: "aaa",
+      price: "2 GC"
     }).set("Authorization", token);
   });
 
@@ -408,13 +480,17 @@ describe("4 - Crie um endpoint para a listagem de produtos", () => {
 
     expect(result.statusCode).toEqual(200);
     expect(result.body).toBeDefined();
-    expect(result.body.length).toEqual(2);
+    expect(result.body.length).toBeDefined();
     expect(result.body[0].id).toBeDefined();
     expect(result.body[0].name).toEqual("name");
     expect(result.body[0].amount).toEqual("amount");
+    expect(result.body[0].url).toEqual("aaa");
+    expect(result.body[0].price).toEqual("2 GC");
     expect(result.body[1].id).toBeDefined();
-    expect(result.body[1].name).toEqual("name2");
-    expect(result.body[1].amount).toEqual("amount2");
+    expect(result.body[1].name).toEqual("name");
+    expect(result.body[1].amount).toEqual("amount");
+    expect(result.body[1].url).toEqual("aaa");
+    expect(result.body[1].price).toEqual("2 GC");
   });
 });
 
@@ -485,6 +561,8 @@ describe("5 - Crie um endpoint para o cadastro de um pedido", () => {
     await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "abc",
+      price: "2 lingotes de prata"
     }).set("Authorization", token);
     const result = await request(app).post("/orders").send({
       products: [1],
@@ -502,15 +580,20 @@ describe("5 - Crie um endpoint para o cadastro de um pedido", () => {
     await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "abc",
+      price: "6 vassouras"
     }).set("Authorization", token);
     await request(app).post("/products").send({
       name: "name2",
       amount: "amount2",
+      url: "abc",
+      price: "6 vassouras"
     }).set("Authorization", token);
     const result = await request(app).post("/orders").send({
       products: [1, 2],
     }).set("Authorization", token);
 
+    console.log(result.body.order);
     expect(result.statusCode).toEqual(201);
     expect(result.body.order).toBeDefined();
     expect(result.body.order.userId).toBeDefined();
@@ -539,14 +622,20 @@ describe("6 - Crie um endpoint para consultar um pedido", () => {
     await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "ccc",
+      price: "6 sabão"
     }).set("Authorization", token);
     await request(app).post("/products").send({
       name: "name2",
       amount: "amount2",
+      url: "bbb",
+      price: "6 sabão"
     }).set("Authorization", token);
     await request(app).post("/products").send({
       name: "name3",
       amount: "amount3",
+      url: "aaa",
+      price: "6 sabão"
     }).set("Authorization", token);
     await request(app).post("/orders").send({
       products: [1, 2],
@@ -620,14 +709,20 @@ describe("7 - Crie um endpoint para listar todos os pedidos", () => {
     await request(app).post("/products").send({
       name: "name",
       amount: "amount",
+      url: "aaa",
+      price: "2 cabras"
     }).set("Authorization", token);
     await request(app).post("/products").send({
       name: "name2",
       amount: "amount2",
+      url: "aaa",
+      price: "2 cabras"
     }).set("Authorization", token);
     await request(app).post("/products").send({
       name: "name3",
       amount: "amount3",
+      url: "aaa",
+      price: "2 cabras"
     }).set("Authorization", token);
   });
 

@@ -1,7 +1,8 @@
 import createProductModel from '../../models/products/createProduct';
+import { Product } from '../../interfaces/product';
 
-const handleCreateProduct = async (name: string, amount: string) => {
-  const createProduct = await createProductModel(name, amount);
+const handleCreateProduct = async (product: Product) => {
+  const createProduct = await createProductModel(product);
 
   return createProduct;
 };

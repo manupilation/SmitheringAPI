@@ -11,6 +11,14 @@ const productsSchemas = Joi.object({
     'string.base': 'Amount must be a string',
     'string.min': 'Amount must be longer than 2 characters',
   }),
+  url: Joi.string().required().messages({
+    'any.required': 'URL is required',
+    'string.base': 'URL must be a string',
+  }),
+  price: Joi.string().required().messages({
+    'any.required': 'Price is required',
+    'string.base': 'Price must be a string',
+  }),
 });
 
 export default productsSchemas;

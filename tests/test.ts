@@ -593,7 +593,6 @@ describe("5 - Crie um endpoint para o cadastro de um pedido", () => {
       products: [1, 2],
     }).set("Authorization", token);
 
-    console.log(result.body.order);
     expect(result.statusCode).toEqual(201);
     expect(result.body.order).toBeDefined();
     expect(result.body.order.userId).toBeDefined();
@@ -776,4 +775,60 @@ describe("7 - Crie um endpoint para listar todos os pedidos", () => {
     expect(result.body[1].products).toEqual([2]);
   });
 
+});
+
+describe("8 - Crie um endpoint para listar todos os pedidos sem autenticação", () => {
+  let token: string;
+  // Clean database and create one user before tests
+  beforeEach((done) => {
+    recreateDatabase()
+      .then(async () => {
+        await request(app).post("/users").send({
+          username: "username",
+          password: "senha1234",
+          level: 2,
+          classe: "classe",
+        });
+      })
+      .then(() => {
+        request(app).post("/login").send({
+          username: "username",
+          password: "senha1234",
+        }).then((result) => {
+          token = result.body.token;
+        });
+      })
+      .then(() => {
+        request(app).post("/products").send({
+          name: "Máscara Dumau",
+          amount: "3 unidades",
+          url: "aaa",
+          price: "3 SC",
+        }).set("Authorization", token)
+      })
+      .then(() => {
+        request(app).post("/products").send({
+          name: "Boneca Voodoo",
+          amount: "12 unidades",
+          url: "aaa",
+          price: "1 GC",
+        }).set("Authorization", token)
+      })
+      .then(() => {
+        request(app).post("/products").send({
+          name: "Faca de micropósitos",
+          amount: "2 unidades",
+          url: "aaa",
+          price: "2 GC",
+        }).set("Authorization", token)
+          done();
+      });
+  });
+
+  it("Retorna todos os itens da loja", async () => {
+    const result = await request(app).get('/');
+
+    expect(result.statusCode).toEqual(200)
+    expect(result.body.store).toBeInstanceOf(Array)
+  })
 });

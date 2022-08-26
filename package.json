@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "prisma": {
+    "seed": "ts-node src/models/prisma/seed"
+  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "db:reset": "npx prisma migrate dev"
+    "db:start": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",

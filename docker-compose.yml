@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  database:
+    image: mysql:8.0.21
+    container_name: database
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=Trybesmith
+      - MYSQL_ROOT_PASSWORD=manupass
+    restart: 'always'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
+      timeout: 10s
+      retries: 3
+
+  smith_api:
+    build: ./
+    container_name: smith_api
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - MYSQL_HOST=database
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=manupass
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]
+      timeout: 10s
+      retries: 5
+    ports:
+      - 3000:3000

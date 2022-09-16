@@ -11,7 +11,8 @@
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"ts-node src/index.ts\"",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "db:start": "npx prisma migrate dev"
+    "db:seed": "prisma db seed",
+    "db:start": "prisma migrate deploy && npx prisma db seed && npm start"
   },
   "keywords": [],
   "author": "",

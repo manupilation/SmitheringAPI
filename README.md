@@ -16,8 +16,6 @@ Using Typescript, Mysql, prisma and Express·
 
 # Requirements
 
-<br>
-
 ### To run the program without problems, you need this programs in your machine:
 
 - [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm);
@@ -47,7 +45,7 @@ Based on the routine of a blacksmith in the Middle Ages (perhaps from Arthurian 
 - Mysql
 - Joi dev
 
-
+<br>
 
 ### To run the program on your machine, run the following commands in order:
 

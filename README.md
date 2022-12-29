@@ -22,7 +22,7 @@ Using Typescript, Mysql, prisma and Express·
 
 - [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm);
 - [Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git);
-- [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) ou [Yarn](https://yarnpkg.com/getting-started/install);
+- [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [Yarn](https://yarnpkg.com/getting-started/install);
 - [Mysql](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install-linux-quick.html);
 - [Docker - Optional](https://docs.docker.com/get-docker/);
 
@@ -38,6 +38,14 @@ Based on the routine of a blacksmith in the Middle Ages (perhaps from Arthurian 
 
 
 ### The technologies that the project uses
+
+- Typescript
+- Node.js
+- Express
+- Prisma
+- JWT
+- Mysql
+- Joi dev
 
 
 

@@ -7,6 +7,8 @@ Using Typescript, Mysql, prisma and Express·
 
 - [Stack](#smitheringapi)
 - [Requirements](#requirements)
+  - [Project Structure](#structure)
+  - [Technologies](#techs)
 - [How does this project work?](#general-explanations)
 - [Running this project](#running-this-project)
 
@@ -29,13 +31,33 @@ Using Typescript, Mysql, prisma and Express·
 
 # General Explanations
 
+
+<p>
 Based on the routine of a blacksmith in the Middle Ages (perhaps from Arthurian times), and how he took care of his stock and customer orders, I created this API that manages the business.
+</p>
+
 
 <br>
 
+<p>
+This API is developed in the REST model, and uses the MySQL database for data registration. The API has some routes. You can access them in your favorite browser or HTTP client.
+</p>
+
+<br>
+
+<h3 id="structure">
+The file structure used is the MSC:
+</h3>
+
+- Model: Responsible for interacting with the Database.
+- Service: Responsible for organizing, adapting, cleaning and verifying the authenticity and validity of the data.
+- Controller: Responsible for HTTP requests, being the API layer closest to the client.
 
 
-### The technologies that the project uses
+
+<h3 id="techs">
+The technologies that the project uses
+</h3>
 
 - Typescript
 - Node.js

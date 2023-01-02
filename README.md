@@ -10,6 +10,7 @@ Using Typescript, Mysql, prisma and Express·
 - [How does this project work?](#general-explanations)
   - [Project Structure](#structure)
   - [Technologies](#techs)
+  - [Routes](#routes)
 - [Running this project](#running-this-project)
 
 ---
@@ -66,6 +67,14 @@ The technologies that the project uses
 - JWT
 - Mysql
 - Joi dev
+
+<br>
+
+<h3 id="routes">
+Disponible routes
+</h3>
+
+If this project is running on your machine, the routes will be exactly like this. If not, adapt the route by changing your domain, port or whatever is necessary.
 
 <br>
 

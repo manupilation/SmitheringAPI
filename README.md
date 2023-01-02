@@ -7,9 +7,9 @@ Using Typescript, Mysql, prisma and Express·
 
 - [Stack](#smitheringapi)
 - [Requirements](#requirements)
+- [How does this project work?](#general-explanations)
   - [Project Structure](#structure)
   - [Technologies](#techs)
-- [How does this project work?](#general-explanations)
 - [Running this project](#running-this-project)
 
 ---

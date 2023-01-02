@@ -74,7 +74,71 @@ The technologies that the project uses
 Disponible routes
 </h3>
 
+<h5>Attention!</h5>
+
 If this project is running on your machine, the routes will be exactly like this. If not, adapt the route by changing your domain, port or whatever is necessary.
+
+- Default Route - GET - http://localhost:3000/
+
+ This route is only available for quick reference out of production. Return a list of products.
+
+---
+
+- CreateNewUser Route - POST - http://localhost:3000/users
+
+  Used to register new user.
+
+```
+{
+  "username": "Ozan",
+  "classe": "Human Archer",
+  "level": 10,
+  "password": "Sorrow and borrow"
+}
+```
+
+---
+
+- SetProduct Route - POST - http://localhost:3000/products
+
+  You must be logged in to access and interact with your products. Return a new Token.
+
+```
+{
+    "name": "Phonsy Knife",
+    "amount": "3",
+    "url": "invalidURL.com",
+    "price": "12 GC"
+}
+```
+
+---
+
+- GetAllProductsRoute - GET - http://localhost:3000/products
+
+  You must be logged in to see and set new products. Just log-in and use your generated token.8
+
+---
+
+- SetNewOrder - POST - http://localhost:3000/orders
+
+  You must be logged in to see and set new products. Just log-in and use your generated token. In this case, the product id is inserted (like the exemple below).
+
+```
+{
+    "products": [1]
+}
+```
+
+---
+
+- GetAllOrders - GET - http://localhost:3000/orders
+
+  Search all the products you've ever ordered. As it is a relational database, all information will be automatically extracted from other tables.
+  Login here is necessary.
+
+---
+
 
 <br>
 

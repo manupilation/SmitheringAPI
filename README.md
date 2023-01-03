@@ -11,7 +11,9 @@ Using Typescript, Mysql, prisma and Express·
   - [Project Structure](#structure)
   - [Technologies](#techs)
   - [Routes](#routes)
-- [Running this project](#running-this-project)
+- [Running this project](#running)
+  - [Manually](#manually)
+  - [Docker - Recommended](#docker)
 
 ---
 
@@ -142,19 +144,51 @@ If this project is running on your machine, the routes will be exactly like this
 
 <br>
 
-### To run the program on your machine, run the following commands in order:
+<h3 id="running">
+To run this code, you have two options:
+</h3>
 
-```
-git clone git@github.com:manupilation/SmitheringAPI.git
-```
+<details close>
+  <summary id="manually">Manually</summary>
+  
+  ```
+  mkdir smitheringApi && cd smitheringApi
+  ```
+  
+  (That command create a new directory for you, and move to inside it).
+
+  ---
+  
+  ```
+  git clone git@github.com:manupilation/SmitheringAPI.git
+  ```
 
   (That command as will clone this project to you).
+  
+  ---
+  
+  ```
+  $ install
+  ```
+  
+  (Using npm or yarn in place of "$", run it to install all dependencies)
 
----
+  ---
 
-- $ install
+- 
 
-  (Run it on the cloned directory. That command will install all dependencies for you).
+  
+  
+</details>
+
+<br>
+
+<details close>
+  <summary id="docker">Docker</summary>
+  
+</details>
+  
+(Run it on the cloned directory. That command will install all dependencies for you).
 
 ---
 

@@ -5,9 +5,8 @@ Using Typescript, Mysql, prisma and Express·
 
 # Summary 📖
 
-- [Stack](#smitheringapi)
-- [Requirements](#requirements)
-- [How does this project work?](#general-explanations)
+- [Requirements](#requires)
+- [How does this project work?](#general-explanations-ℹ️)
   - [Project Structure](#structure)
   - [Technologies](#techs)
   - [Routes](#routes)
@@ -19,9 +18,10 @@ Using Typescript, Mysql, prisma and Express·
 ---
 
 
-
-# Requirements ☑️
-
+<h1 id="requires">
+  Requirements ☑️
+</h1>
+  
 ### To run the program without problems, you need this programs in your machine:
 
 - [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm);
@@ -73,11 +73,12 @@ The technologies that the project uses
 
 <br>
 
-<h3 id="routes">
-Disponible routes 🏳️
-</h3>
-
-<h5>Attention!</h5>
+<details close id="routes">
+  <summary>
+    Disponible routes 🏳️
+  </summary>
+  
+  <h5>Attention!</h5>
 
 If this project is running on your machine, the routes will be exactly like this. If not, adapt the route by changing your domain, port or whatever is necessary.
 
@@ -144,6 +145,9 @@ If this project is running on your machine, the routes will be exactly like this
 
 
 <br>
+
+
+</details>
 
 
 

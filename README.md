@@ -1,9 +1,9 @@
-# SmitheringAPI
+# SmitheringAPI 🔨
 API created with educational purpose.
 Using Typescript, Mysql, prisma and Express·
 
 
-# Summary
+# Summary 📖
 
 - [Stack](#smitheringapi)
 - [Requirements](#requirements)
@@ -20,7 +20,7 @@ Using Typescript, Mysql, prisma and Express·
 
 
 
-# Requirements
+# Requirements ☑️
 
 ### To run the program without problems, you need this programs in your machine:
 
@@ -33,7 +33,7 @@ Using Typescript, Mysql, prisma and Express·
 ---
 <br>
 
-# General Explanations
+# General Explanations ℹ️
 
 
 <p>
@@ -74,7 +74,7 @@ The technologies that the project uses
 <br>
 
 <h3 id="routes">
-Disponible routes
+Disponible routes 🏳️
 </h3>
 
 <h5>Attention!</h5>
@@ -180,7 +180,7 @@ To run this code, you have two options:
 <br>
 
 <details close>
-  <summary id="manually">Manually</summary>
+  <summary id="manually">Manually ✋</summary>
  
   <br>
   
@@ -198,6 +198,10 @@ To run this code, you have two options:
   git clone git@github.com:manupilation/SmitheringAPI.git
   ```
   
+  ```
+  cd SmitheringAPI
+  ```
+
   ---
   
   ```
@@ -234,7 +238,7 @@ To run this code, you have two options:
 <br>
 
 <details close>
-  <summary id="docker">Docker</summary>
+  <summary id="docker">Docker 🐋</summary>
  
   <br>
   

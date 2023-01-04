@@ -181,20 +181,22 @@ To run this code, you have two options:
 
 <details close>
   <summary id="manually">Manually</summary>
+ 
+  <br>
+  
+  (That command create a new directory for you, and move to inside it).
   
   ```
   mkdir smitheringApi && cd smitheringApi
   ```
-  
-  (That command create a new directory for you, and move to inside it).
 
   ---
+
+  (That command as will clone this project to you).
   
   ```
   git clone git@github.com:manupilation/SmitheringAPI.git
   ```
-
-  (That command as will clone this project to you).
   
   ---
   
@@ -205,9 +207,26 @@ To run this code, you have two options:
   (Using npm or yarn in place of "$", run it to install all dependencies)
 
   ---
+  
+  If you want a faster initialization, whose database will initialize populated (seed), you can choose the following command:
 
-- 
+  ```
+  npm run db:start
+  ```
+  
+  ```
+  yarn db:start
+  ```
+  
+  (Using npm or yarn)
 
+  ---
+  
+  But if you choose to initialize with an empty DB, use the command:
+  
+  ```
+  $ start
+  ```
   
   
 </details>
@@ -216,5 +235,11 @@ To run this code, you have two options:
 
 <details close>
   <summary id="docker">Docker</summary>
+ 
+  <br>
   
+  
+  With docker, everything becomes simpler. If you use docker compose, run the docker-compose.yml file in the main directory.
+
+  Docker compose will automatically generate a MySQL image and run the API on port 3000.
 </details>

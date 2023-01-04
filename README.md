@@ -100,7 +100,21 @@ If this project is running on your machine, the routes will be exactly like this
   "password": "Sorrow and borrow"
 }
 ```
-
+  
+---
+  
+- Login Route - POST - http://localhost:3000/login
+  
+  Used to log-in your account. If you used the seed disponible in this project, you can login with account:
+  
+ ```
+ {
+   "password": "whyAreYouRunning",
+   "username": "default_admin"
+ }
+ ```
+  
+  
 ---
 
 - SetProduct Route - POST - http://localhost:3000/products
@@ -142,6 +156,10 @@ If this project is running on your machine, the routes will be exactly like this
   Login here is necessary.
 
 ---
+  
+  In this route, just inform the order id in the URL. Return an order if it exists.
+  
+- GetOrderById - GET - http://localhost:3000/orders/"idNumberHere"
 
 
 <br>

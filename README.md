@@ -12,6 +12,7 @@ Using Typescript, Mysql, prisma and Express·
   - [Technologies](#techs)
   - [Routes](#routes)
 - [Running this project](#running)
+  - [First step](#first)
   - [Manually](#manually)
   - [Docker - Recommended](#docker)
 
@@ -144,9 +145,39 @@ If this project is running on your machine, the routes will be exactly like this
 
 <br>
 
+
+
 <h3 id="running">
 To run this code, you have two options:
 </h3>
+
+
+<p id="first">
+  But first, you need to create your environment variables:
+</p>
+
+  If you are inside project directory (You can create manually too):
+ 
+  ```
+  touch .env
+  ```
+  
+  Now, you need this variables:
+  
+  - MYSQL_HOST
+  - MYSQL_USER
+  - MYSQL_PASSWORD
+  
+  Put your Mysql credentials here! Like this:
+  
+  ```
+  MYSQL_HOST=database
+  MYSQL_USER=root
+  MYSQL_PASSWORD=manupass
+  DATABASE_URL="mysql://root:manupass@database:3306/Trybesmith"
+  ```
+  
+<br>
 
 <details close>
   <summary id="manually">Manually</summary>
@@ -187,15 +218,3 @@ To run this code, you have two options:
   <summary id="docker">Docker</summary>
   
 </details>
-  
-(Run it on the cloned directory. That command will install all dependencies for you).
-
----
-
-- npx prisma migrate dev / yarn migrate dev / $ db:reset
-
-  (Choose the better for you. That command will be to create all database and turn it ready for you).
-
-###### Now, this API is ready to you. We have some endpoints to you (explore it!)
-
----

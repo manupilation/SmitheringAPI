@@ -5,7 +5,7 @@ services:
     image: mysql:8.0.21
     container_name: database
     ports:
-      - 3306:3306
+      - ${MYSQLPORT}:${MYSQLPORT}
     environment:
       - MYSQL_DATABASE=Trybesmith
       - MYSQL_ROOT_PASSWORD=manupass

@@ -4,6 +4,7 @@ import MapErrorJoi from '../../interfaces/EnumErrorsJoi';
 import IErroJoi from '../../interfaces/ErrorJoi';
 
 const JoiError = (err: IErroJoi, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
   // const ErrorMap = MapErrorJoi;
   // const errorCode = err.code;
   // https://stackoverflow.com/questions/36316326/typescript-ts7015-error-when-accessing-an-enum-using-a-string-type-parameter

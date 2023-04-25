@@ -11,7 +11,7 @@ services:
       - MYSQL_ROOT_PASSWORD=manupass
     restart: 'always'
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "database"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "database" ]
       timeout: 10s
       retries: 3
 
@@ -22,11 +22,11 @@ services:
       database:
         condition: service_healthy
     environment:
-      - MYSQL_HOST=database
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=manupass
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3000"]
+      test: [ "CMD", "lsof", "-t", "-i:3000" ]
       timeout: 10s
       retries: 5
     ports:

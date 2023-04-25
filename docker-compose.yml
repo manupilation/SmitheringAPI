@@ -8,7 +8,7 @@ services:
       - ${MYSQLPORT}:${MYSQLPORT}
     environment:
       - MYSQL_DATABASE=Trybesmith
-      - MYSQL_ROOT_PASSWORD=manupass
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
     restart: 'always'
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "database" ]
@@ -26,8 +26,8 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     healthcheck:
-      test: [ "CMD", "lsof", "-t", "-i:3000" ]
+      test: [ "CMD", "lsof", "-t", "-i:${PORT}" ]
       timeout: 10s
       retries: 5
     ports:
-      - 3000:3000
+      - ${PORT}:${PORT}
